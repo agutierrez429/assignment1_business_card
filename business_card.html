@@ -183,11 +183,9 @@
     <script>
         let inactivityTimer;
 
-        // Handle instruction visibility based on activity
         const card = document.querySelector('.card');
         const instruction = document.querySelector('.instruction');
 
-        // Start initial timer - show instruction after 5 seconds of inactivity
         inactivityTimer = setTimeout(function() {
             if (instruction) {
                 instruction.style.opacity = '1';
@@ -195,17 +193,14 @@
         }, 5000);
 
         card.addEventListener('mouseenter', function() {
-            // Clear the inactivity timer
             clearTimeout(inactivityTimer);
 
-            // Hide instruction immediately on hover
             if (instruction && instruction.style.opacity !== '0') {
                 instruction.style.opacity = '0';
             }
         });
 
         card.addEventListener('mouseleave', function() {
-            // Start timer to show instruction again after 5 seconds of inactivity
             inactivityTimer = setTimeout(function() {
                 if (instruction && instruction.style.opacity === '0') {
                     instruction.style.opacity = '1';
