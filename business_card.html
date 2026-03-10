@@ -108,14 +108,14 @@
             background: linear-gradient(315deg, #808080 0%, #404040 50%, #000000 100%);
             color: #ffffff;
             transform: rotateY(180deg);
-            justify-content: flex-start;
-            text-align: left;
+            justify-content: center;
+            text-align: center;
             padding: clamp(15px, 3vw, 25px);
         }
         .card-back p {
             margin: clamp(4px, 1vw, 8px) 0;
             line-height: 1.4;
-            font-size: clamp(10px, 2vw, 14px);
+            font-size: clamp(12px, 2vw, 14px);
         }
         .card-front p:last-child {
             cursor: pointer;
@@ -169,11 +169,10 @@
                 </div>
                 <h1>Alexis Gutierrez</h1>
                 <p>Software Engineer</p>
-                <p>alexis@example.com</p>
             </div>
             <div class="card-back">
-                <p><strong>About Me:</strong></p>
-                <p>I'm a passionate Computer Science student at CSUDH with interest in web development and software engineering. I also enjoy basic Automotive Mechanic work.</p>
+                <p><strong>CSUDH Student</strong></p>
+                <p>Passionate about Software Engineering and Automotive Mechanic work</p>
                 <p><strong>Email:</strong> alexis@example.com</p>
                 <p><strong>Phone:</strong> (123) 456-7890</p>
                 <button class="cta-button">Get In Touch</button>
@@ -190,7 +189,7 @@
             if (instruction) {
                 instruction.style.opacity = '1';
             }
-        }, 5000);
+        }, 3000);
 
         card.addEventListener('mouseenter', function() {
             clearTimeout(inactivityTimer);
@@ -205,7 +204,7 @@
                 if (instruction && instruction.style.opacity === '0') {
                     instruction.style.opacity = '1';
                 }
-            }, 5000);
+            }, 3000);
         });
     </script>
 </body>
