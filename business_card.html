@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexis' Business Card</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient( #808080 0%, #404040 50%, #000000 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            width: 90%;
+            max-width: 450px;
+            aspect-ratio: 16 / 10;
+            perspective: 1000px;
+            min-width: 250px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .instruction {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffffff;
+            font-size: clamp(12px, 2.5vw, 14px);
+            font-weight: 300;
+            opacity: 0;
+            text-align: center;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+        .card:focus {
+            outline: 2px solid #007bff;
+            outline-offset: 4px;
+            transform: scale(1.02);
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            border: 2px solid #d5e1ef;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        .card-front {
+            background: linear-gradient(315deg, #808080 0%, #404040 50%, #000000 100%);
+            color: #333333;
+        }
+        .profile-image {
+            margin-bottom: 15px;
+        }
+        .avatar {
+            width: clamp(60px, 12vw, 80px);
+            height: clamp(60px, 12vw, 80px);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(20px, 4vw, 28px);
+            font-weight: bold;
+            margin: 0 auto;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .card-front h1 {
+            margin: 0 0 10px 0;
+            font-size: clamp(18px, 5vw, 28px);
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .card-front p {
+            margin: 5px 0;
+            font-size: clamp(14px, 3vw, 18px);
+            color: #ffffff;
+        }
+        .card-back {
+            background: linear-gradient(315deg, #808080 0%, #404040 50%, #000000 100%);
+            color: #ffffff;
+            transform: rotateY(180deg);
+            justify-content: flex-start;
+            text-align: left;
+            padding: clamp(15px, 3vw, 25px);
+        }
+        .card-back p {
+            margin: clamp(4px, 1vw, 8px) 0;
+            line-height: 1.4;
+            font-size: clamp(10px, 2vw, 14px);
+        }
+        .card-front p:last-child {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .card-front p:last-child:hover {
+            color: #4CAF50;
+            text-decoration: underline;
+        }
+        .card-back p:nth-child(3), .card-back p:nth-child(4) {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .card-back p:nth-child(3):hover, .card-back p:nth-child(4):hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+        .cta-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: clamp(6px, 1.5vw, 10px) clamp(12px, 3vw, 20px);
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: clamp(11px, 2.2vw, 14px);
+            font-weight: bold;
+            margin-top: clamp(8px, 1.5vw, 12px);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover, .cta-button:focus {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .cta-button:focus {
+            outline: 2px solid #007bff;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" tabindex="0">
+        <div class="instruction">Hover to flip</div>
+        <div class="card-inner">
+            <div class="card-front">
+                <div class="profile-image">
+                    <div class="avatar">AG</div>
+                </div>
+                <h1>Alexis Gutierrez</h1>
+                <p>Software Engineer</p>
+                <p>alexis@example.com</p>
+            </div>
+            <div class="card-back">
+                <p><strong>About Me:</strong></p>
+                <p>I'm a passionate Computer Science student at CSUDH with interest in web development and software engineering. I also enjoy basic Automotive Mechanic work.</p>
+                <p><strong>Email:</strong> alexis@example.com</p>
+                <p><strong>Phone:</strong> (123) 456-7890</p>
+                <button class="cta-button">Get In Touch</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let inactivityTimer;
+
+        // Handle instruction visibility based on activity
+        const card = document.querySelector('.card');
+        const instruction = document.querySelector('.instruction');
+
+        // Start initial timer - show instruction after 5 seconds of inactivity
+        inactivityTimer = setTimeout(function() {
+            if (instruction) {
+                instruction.style.opacity = '1';
+            }
+        }, 5000);
+
+        card.addEventListener('mouseenter', function() {
+            // Clear the inactivity timer
+            clearTimeout(inactivityTimer);
+
+            // Hide instruction immediately on hover
+            if (instruction && instruction.style.opacity !== '0') {
+                instruction.style.opacity = '0';
+            }
+        });
+
+        card.addEventListener('mouseleave', function() {
+            // Start timer to show instruction again after 5 seconds of inactivity
+            inactivityTimer = setTimeout(function() {
+                if (instruction && instruction.style.opacity === '0') {
+                    instruction.style.opacity = '1';
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
